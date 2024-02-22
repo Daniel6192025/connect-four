@@ -13,24 +13,24 @@ public class State
 
     public boolean isWinner() {
         int total;
-        for (int row=0; row<Constants.BOARD_SIZE; row++) {
-            total = getBoardCell(row, 0) + getBoardCell(row,1) + getBoardCell(row,2);
-            if (total == -3 || total == 3) return true;
+        for (int row=0; row<Constants.BOARD_ROW; row++) {
+            total = getBoardCell(row, 0) + getBoardCell(row,1) + getBoardCell(row,2) + getBoardCell(row, 3);
+            if (total == -4 || total == 4) return true;
         }
-        for (int col=0; col<Constants.BOARD_SIZE; col++) {
-            total = getBoardCell(0, col) + getBoardCell(1,col) + getBoardCell(2, col);
-            if (total == -3 || total == 3) return true;
+        for (int col=0; col<Constants.BOARD_COL; col++) {
+            total = getBoardCell(0, col) + getBoardCell(1,col) + getBoardCell(2, col) + getBoardCell(3, col);
+            if (total == -4 || total == 4) return true;
         }
         total = getBoardCell(0, 0) + getBoardCell(1,1) + getBoardCell(2, 2);
-        if (total == -3 || total == 3) return true;
+        if (total == -4 || total == 4) return true;
         total = getBoardCell(2, 0) + getBoardCell(1,1) + getBoardCell(0, 2);
-        if (total == -3 || total == 3) return true;
+        if (total == -4 || total == 4) return true;
         return false;
     }
 
     public boolean isTie() {
-        for (int row=0; row<Constants.BOARD_SIZE; row++) {
-            for (int col=0; col<Constants.BOARD_SIZE; col++) {
+        for (int row=0; row<Constants.BOARD_ROW; row++) {
+            for (int col=0; col<Constants.BOARD_COL; col++) {
                 if (getBoardCell(row,col) == Constants.BLANK) {
                     return false;
                 }
@@ -59,11 +59,11 @@ public class State
         return redName;
     }
 
-    public void setredName(String redName) {
+    public void setRedName(String redName) {
         this.redName = redName;
     }
 
-    public String getblackName() {
+    public String getBlackName() {
         return blackName;
     }
 
